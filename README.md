@@ -1,1 +1,1 @@
-Blog APIs.
+Blog APIs
