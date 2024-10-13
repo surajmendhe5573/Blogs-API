@@ -11,6 +11,16 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'email', 'password', 'age', 'gender']
 
+    def validate_age(self, value):
+        if value <=20:
+            raise serializers.ValidationError("Age must be greater than 20.")
+        return value
+    
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            raise serializers.ValidationError("This email is already register.")
+        return value
+
     def create(self, validated_data):
         user = User.objects.create_user(
             username=validated_data['username'],

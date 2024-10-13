@@ -3,7 +3,7 @@ from django.db import models
 
 # Custom User Model
 class User(AbstractUser):
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
     age = models.PositiveIntegerField(null=True, blank=True)
     gender = models.CharField(max_length=10, choices=(('Male', 'Male'), ('Female', 'Female')))
 
