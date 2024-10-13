@@ -11,6 +11,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username', 'email', 'password', 'age', 'gender']
 
+    # field level validation
     def validate_age(self, value):
         if value <=20:
             raise serializers.ValidationError("Age must be greater than 20.")
